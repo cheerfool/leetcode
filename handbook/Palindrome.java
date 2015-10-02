@@ -1,4 +1,4 @@
-package cc;
+package handbook;
 
 public class Palindrome {
     public boolean isPalindrome(String s) {
