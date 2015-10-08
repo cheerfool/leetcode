@@ -29,10 +29,11 @@ public class Test {
 	}
 
 	public static void main(String[] args) {
-		int[][] matrix = testMatrix(3,6);
-		for(int[] list: matrix){
-			for(int x: list) System.out.println(x);
-		}
+//		int[][] matrix = testMatrix(3,6);
+//		for(int[] list: matrix){
+//			for(int x: list) System.out.println(x);
+//		}
+		print((-3)/2);
 		
 		
 		/*
