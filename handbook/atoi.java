@@ -1,13 +1,13 @@
 package handbook;
 
-public class atoi {
+public class Atoi {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		System.out.println(myAtoi("   /.dsf-12345lln"));
 	}
 
-    public int myAtoi(String str) {
+    public static int myAtoi2(String str) {
         int len = str.length();
         int result=0, sign=1;
         for(int i=0; i<len; i++){
@@ -21,14 +21,42 @@ public class atoi {
                     if(ch<'0' || ch>'9')
                         return result;
                     int unit=ch-'0';
-                    if(sign>0 && (Integer.MAX_VALUE-unit)/10>=result)
-                        result= result*10 + unit;
-                    else if(sign<0 && (Integer.MIN_VALUE+unit)/10<=result)
-                        result= result*10 - unit;
-                        
+                    if(sign>0 && (Integer.MAX_VALUE-unit)/10<result)
+                        return Integer.MAX_VALUE;
+                    else if(sign<0 && (Integer.MIN_VALUE+unit)/10>result)
+                        return Integer.MIN_VALUE;
+                    result = result * 10 + sign*unit;
                 }
                 return result;
             }
+        }
+        return result;
+    }
+    
+    public static int myAtoi(String str) {
+        int len = str.length();
+        int i = 0;
+        while(i<len && str.charAt(i)==' ')
+            i++;
+        int result=0, sign=1;
+        if(i==len)
+            return result;
+        if(str.charAt(i)=='+'){
+            i++;
+        }else if(str.charAt(i)=='-'){
+            sign = -1;
+            i++;
+        }
+        for(int j=i; j<len; j++){
+            char ch= str.charAt(j);
+            if(ch<'0' || ch>'9')
+                return result;
+            int unit=ch-'0';
+            if(sign>0 && (Integer.MAX_VALUE-unit)/10<result)
+                return Integer.MAX_VALUE;
+            else if(sign<0 && (Integer.MIN_VALUE+unit)/10>result)
+                return Integer.MIN_VALUE;
+            result = result * 10 + sign*unit;
         }
         return result;
     }
